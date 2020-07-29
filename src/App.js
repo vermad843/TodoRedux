@@ -5,16 +5,11 @@ import {actions} from './store';
 class App extends Component {
   formSubmitted = (e) => {
     e.preventDefault();
-    this.setState({
-      newTodo: "",
-      todos: [
-        ...this.state.todos,
-        {
-          title: this.state.newTodo,
-          done: false
-        }
-      ]
+    this.props.onAddTodo({
+        title: this.props.newTodo,
+        done: false
     });
+    this.props.onNewTodoChanged('');
   }
 
 
@@ -102,6 +97,9 @@ function mapDispatchToProps(dispatch) {
     return {
         onNewTodoChanged(newTodo){
             dispatch(actions.newTodoChanged(newTodo));
+        },
+        onAddTodo(todo) {
+          dispatch(actions.addTodo(todo));
         }
     }
 }

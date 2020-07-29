@@ -1,3 +1,5 @@
+[x] npm i redux react-redux redux-logger
+
 [x] store.js file
 
 [x] reducer 
