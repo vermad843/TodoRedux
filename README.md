@@ -10,3 +10,4 @@
 
 [x] mapDispatchToProps 
 
+[x]redux logger and redux devtools setup in index.js
