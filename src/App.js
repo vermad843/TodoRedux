@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {connect} from 'react-redux';
 import {actions} from './store';
 
+
 class App extends Component {
   formSubmitted = (e) => {
     e.preventDefault();
@@ -14,12 +15,10 @@ class App extends Component {
 
 
   toggleTodoDone(event, index){
-    const todos = [...this.state.todos];
-    todos[index] = { ...todos[index] };
-    todos[index].done = event.target.checked;
-    this.setState({
-      todos
-    });
+    this.props.onToggleTodoDone({
+       index,
+       checked : event.target.checked
+    })
   }
 
   removeTodo(index){
@@ -100,6 +99,9 @@ function mapDispatchToProps(dispatch) {
         },
         onAddTodo(todo) {
           dispatch(actions.addTodo(todo));
+        },
+        onToggleTodoDone(toggle) {
+          dispatch(actions.toggleTodoDone(toggle));
         }
     }
 }

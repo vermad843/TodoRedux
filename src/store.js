@@ -1,5 +1,6 @@
 const NEW_TODO_CHANGED = 'NEW_TODO_CHANGED';
 const ADD_TODO = 'ADD_TODO';
+const TOGGLE_TODO_DONE = 'TOGGLE_TODO_DONE';
 
 const initialState = {
     heading: "Todos",
@@ -29,6 +30,12 @@ export const actions = {
             type : ADD_TODO,
             todo
         }
+    },
+    toggleTodoDone(toggle) {
+        return {
+            type : TOGGLE_TODO_DONE,
+            toggle
+        }
     }
 }
 
@@ -44,6 +51,15 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 todos : [...state.todos,action.todo]
+            }
+        }
+        case TOGGLE_TODO_DONE : {
+            const todos = [...state.todos];
+            todos[action.toggle.index] = { ...todos[action.toggle.index] };
+            todos[action.toggle.index].done = action.toggle.checked;
+            return {
+                ...state,
+                todos
             }
         }
         default :
