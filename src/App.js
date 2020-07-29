@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
+import {actions} from './store';
 
 class App extends Component {
   formSubmitted = (e) => {
@@ -16,11 +17,6 @@ class App extends Component {
     });
   }
 
-  handleChanged = (e) => {
-    this.setState({
-      newTodo: e.target.value
-    });
-  }
 
   toggleTodoDone(event, index){
     const todos = [...this.state.todos];
@@ -59,7 +55,7 @@ class App extends Component {
         <form onSubmit={this.formSubmitted}>
           <label htmlFor="newTodo">NewTodo</label>
           <input
-            onChange={this.handleChanged}
+            onChange={(e) => this.props.onNewTodoChanged(e.target.value)}
             name="newTodo"
             id="newTodo"
             value={newTodo}
@@ -102,4 +98,12 @@ function mapStateToProps(state) {
    }
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+    return {
+        onNewTodoChanged(newTodo){
+            dispatch(actions.newTodoChanged(newTodo));
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
