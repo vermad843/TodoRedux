@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>tick</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Thankyou01" transform="translate(-692.000000, -109.000000)" fill-rule="nonzero">
+            <g id="Congrats" transform="translate(0.000000, 69.000000)">
+                <g id="tick" transform="translate(692.000000, 40.000000)">
+                    <path d="M29.8221081,4.05405405e-05 C46.2922703,4.05405405e-05 59.6440541,13.3519459 59.6440541,29.8221081 C59.6440541,46.2922703 46.2922703,59.6440541 29.8221081,59.6440541 C13.3519459,59.6440541 3.84644107e-05,46.2922703 3.84644107e-05,29.8221081 L3.84644107e-05,29.8221081 C-0.0467027027,13.3986486 13.229027,0.047027027 29.6523243,4.05405405e-05 C29.7089189,4.05405405e-05 29.7655135,4.05405405e-05 29.8221081,4.05405405e-05 Z" id="Path" fill="#0E9F49"></path>
+                    <polygon id="Path" fill="#FFFFFF" points="46.3427027 21.6040541 25.1623784 42.7843784 13.3013514 31.0081622 18.1305405 26.2637838 25.1623784 33.210973 41.5136757 16.8596757"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

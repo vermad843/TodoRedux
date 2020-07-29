@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/loader-style.css">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="loader-wrap">
+    <div class="single-chart mr-12">
+      <svg viewbox="0 0 36 36" class="circular-chart">
+        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path class="circle-progress" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="18" y="20.35" class="percentage" style="visibility: hidden;">0%</text>
+      </svg>
+      <span class="initial-img"></span>
+    </div>
+    <div class="fs-20 text-black loading-text"><span class="fw-bold" >Be Ready!</span> We’re finding the best cards you are eligible for</div>
+  </div>
+  <script>
+    var path = document.querySelector('.circle-progress');
+    var text = document.querySelector('.percentage');
+    var length = path.getTotalLength();
+    var i = 0;
+    var count = 0;
+    var ticks = 50;
+    setInterval(function() {
+      if (i < length+length/ticks) {
+        path.setAttribute('stroke-dasharray', i+","+length);
+        i+=length/ticks;
+        text.innerHTML=Math.round((count++/ticks)*100);
+        if(text.textContent == 100){
+         document.querySelector('.initial-img').classList.add('like-img')
+        }
+      }
+      
+    }, 100);
+  </script>
+</body>
+</html>

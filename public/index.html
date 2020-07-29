@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.bankyatra.com/css/bootstrap.css">
+    <link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+<script>
+     let collapsibleCta = document.querySelectorAll('.collapsible-cta');
+    collapsibleCta.forEach((data)=>{
+        data.onclick = function(){
+            this.parentNode.parentNode.nextElementSibling.classList.toggle('hide');
+            if(this.classList.contains('ic-plus'))
+            {
+                this.classList.remove('ic-plus');
+                this.classList.add('ic-minus');
+            }
+            else{
+                this.classList.add('ic-plus');
+                this.classList.remove('ic-minus');
+            }
+        }
+    })
+    let moreDetailCta = document.querySelectorAll('.more-detail-cta');
+    let moreDetailModal = document.querySelector('.more-detail-modal');
+    moreDetailCta.forEach((data)=>{
+        data.onclick = function(){
+            moreDetailModal.classList.add('show');
+            moreDetailModal.style.display = "block";
+        }
+    })
+    let detailClose = document.querySelector('.detail-close');
+    detailClose.onclick = function(){
+        let moreDetailModal = document.querySelector('.more-detail-modal');
+        moreDetailModal.classList.remove('show');
+        moreDetailModal.style.display = "none";
+    }
+
+    let applyFilter = document.querySelector('.apply-filter')
+    let availableCard = document.querySelector('.available-card');
+    let clearAll = document.querySelector('.clear-all')
+    let filterChip = document.querySelectorAll('.filter-chip');
+    filterChip.forEach((data)=>{
+        data.onclick = function(){
+            if(this.checked = true)
+            {
+                applyFilter.classList.remove('disabled');
+            }
+        }
+    })
+   
+    function uncheckAll() {
+        var inputs = document.querySelectorAll('.custom-control-input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].checked = false;
+        }
+    }
+    let closeSmEle = document.querySelectorAll('.closeSm');
+    closeSmEle.forEach((data) =>{
+            data.onclick = function(){
+            this.parentNode.remove()
+        }
+    })
+    let filterHead = document.querySelectorAll('.filter-head');
+    filterHead.forEach(element => {
+        element.onclick = function(){
+           document.querySelector('.filter-head.active').classList.remove('active') 
+           this.classList.add('active') 
+           let eleAttr = this.getAttribute('data-rel')
+           document.querySelector('.tabContent.show').classList.remove('show');
+           getId(eleAttr)
+        }
+    });
+    function getId(currentId){
+        document.getElementById(currentId).classList.add('show')
+    }
+    let filterModal = document.querySelector('.filter-modal');
+    let filterMore = document.querySelector('.more-filter');
+    let eleDiv = document.createElement('div');
+    eleDiv.className = "modal-backdrop fade show";
+    let bodyEle = document.body 
+    filterMore.onclick = function(){
+        filterModal.classList.add('show');
+        filterModal.style.display = "block";
+        bodyEle.appendChild(eleDiv);
+        bodyEle.classList.add('modal-open');
+    }
+    let cancelCta = document.querySelector('.cancel-cta');
+    cancelCta.onclick = function(){
+        filterModal.classList.remove('show');
+        filterModal.style.display = "none";
+        bodyEle.removeChild(eleDiv);
+        bodyEle.classList.remove('modal-open');
+    }
+    let clearAllFilter = document.querySelector('.clear-all-filter')
+    clearAllFilter.onclick = function(){
+        applyFilter.classList.add('disabled');
+        uncheckAll() 
+    }
+    let fApplyFilter = document.querySelector('.f-apply-filter')
+    fApplyFilter.onclick = function(){
+        filterModal.classList.remove('show');
+        filterModal.style.display = "none";
+        bodyEle.removeChild(eleDiv);
+        bodyEle.classList.remove('modal-open');
+    }
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+    output.innerHTML = this.value;
+    }
+</script>
+<div id="root"></div>
+</body>
+</html>
