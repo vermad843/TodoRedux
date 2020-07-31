@@ -2,6 +2,7 @@ const NEW_TODO_CHANGED = 'NEW_TODO_CHANGED';
 const ADD_TODO = 'ADD_TODO';
 const TOGGLE_TODO_DONE = 'TOGGLE_TODO_DONE';
 const REMOVE_TODO = 'REMOVE_TODO';
+const ALL_DONE = 'ALL_DONE';
 
 const initialState = {
     heading: "Todos",
@@ -43,6 +44,11 @@ export const actions = {
             type : REMOVE_TODO,
             index
         }
+    },
+    allDone(){
+        return {
+            type : ALL_DONE,
+        }
     }
 }
 
@@ -76,6 +82,18 @@ export function reducer(state = initialState, action) {
                 ...state,
                 todos 
              }
+        }
+        case ALL_DONE : {
+            const todos = state.todos.map(todo => {
+                return {
+                  title: todo.title,
+                  done: true
+                };
+              });
+              return {
+                ...state,
+                  todos
+              }
         }
         default :
           return state;         

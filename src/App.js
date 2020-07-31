@@ -30,15 +30,7 @@ class App extends Component {
   }
 
   allDone(){
-    const todos = this.state.todos.map(todo => {
-      return {
-        title: todo.title,
-        done: true
-      };
-    });
-    this.setState({
-      todos
-    });
+    this.props.onAllDone(); 
   }
 
   render() {
@@ -105,7 +97,11 @@ function mapDispatchToProps(dispatch) {
         },
         onRemoveTodo(index){
           dispatch(actions.removeTodo(index));
+        },
+        onAllDone(){
+          dispatch(actions.allDone());
         }
+
     }
 }
 
