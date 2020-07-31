@@ -1,6 +1,7 @@
 const NEW_TODO_CHANGED = 'NEW_TODO_CHANGED';
 const ADD_TODO = 'ADD_TODO';
 const TOGGLE_TODO_DONE = 'TOGGLE_TODO_DONE';
+const REMOVE_TODO = 'REMOVE_TODO';
 
 const initialState = {
     heading: "Todos",
@@ -36,6 +37,12 @@ export const actions = {
             type : TOGGLE_TODO_DONE,
             toggle
         }
+    },
+    removeTodo(index){
+        return {
+            type : REMOVE_TODO,
+            index
+        }
     }
 }
 
@@ -61,6 +68,14 @@ export function reducer(state = initialState, action) {
                 ...state,
                 todos
             }
+        }
+        case REMOVE_TODO : {
+            const todos = [...state.todos];
+             todos.splice(action.index, 1);
+             return {
+                ...state,
+                todos 
+             }
         }
         default :
           return state;         

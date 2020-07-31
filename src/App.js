@@ -13,6 +13,10 @@ class App extends Component {
     this.props.onNewTodoChanged('');
   }
 
+  newTodoChanged  = (e) => {
+    this.props.onNewTodoChanged(e.target.value)
+  }
+
 
   toggleTodoDone(event, index){
     this.props.onToggleTodoDone({
@@ -22,11 +26,7 @@ class App extends Component {
   }
 
   removeTodo(index){
-    const todos = [...this.state.todos];
-    todos.splice(index, 1);
-    this.setState({
-      todos
-    });
+    this.props.onRemoveTodo(index)
   }
 
   allDone(){
@@ -49,7 +49,7 @@ class App extends Component {
         <form onSubmit={this.formSubmitted}>
           <label htmlFor="newTodo">NewTodo</label>
           <input
-            onChange={(e) => this.props.onNewTodoChanged(e.target.value)}
+            onChange={this.newTodoChanged}
             name="newTodo"
             id="newTodo"
             value={newTodo}
@@ -102,6 +102,9 @@ function mapDispatchToProps(dispatch) {
         },
         onToggleTodoDone(toggle) {
           dispatch(actions.toggleTodoDone(toggle));
+        },
+        onRemoveTodo(index){
+          dispatch(actions.removeTodo(index));
         }
     }
 }
